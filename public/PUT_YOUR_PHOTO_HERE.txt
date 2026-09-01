@@ -1,0 +1,20 @@
+Add your profile photo to this "public" folder, named exactly:
+
+    profile.jpg
+
+So the full path is:  ce-portfolio-react/public/profile.jpg
+
+Vite serves everything in this folder directly at the site's root URL,
+so a file at public/profile.jpg is automatically reachable at /profile.jpg
+— which is exactly what src/components/Hero/Hero.jsx already points to.
+No code changes needed once the file is here — just refresh the page.
+
+If you'd rather use a .png or .webp file instead of .jpg:
+  1. Name your file accordingly (e.g. profile.png)
+  2. Open src/components/Hero/Hero.jsx and change:
+       src="/profile.jpg"
+     to:
+       src="/profile.png"
+
+You can delete this .txt file once your photo is in place — it's just
+a placeholder marker, not read by the app.

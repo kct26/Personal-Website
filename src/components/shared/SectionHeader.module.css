@@ -1,0 +1,19 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.head h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: lowercase;
+}
+
+.dark h2 {
+  color: var(--ink-text);
+}

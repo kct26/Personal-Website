@@ -1,0 +1,159 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--accent-soft);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.cover {
+  width: 100%;
+  height: 200px;
+  flex-shrink: 0;
+  background: var(--ink);
+  border-bottom: 1px solid var(--ink-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-image:
+    linear-gradient(var(--ink-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ink-line) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.cover svg { width: 100%; height: 100%; overflow: visible; }
+
+.body { padding: 22px 24px 24px; flex: 1; min-width: 0; }
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.top h3 { font-size: 1.1rem; color: var(--text); }
+
+.tag {
+  font-size: 10.5px;
+  color: var(--text-faint);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 3px 9px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.body p {
+  color: var(--text-dim);
+  font-weight: 450;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.highlights {
+  list-style: none;
+  margin-bottom: 16px;
+}
+
+.highlights li {
+  position: relative;
+  padding-left: 15px;
+  font-size: 12.5px;
+  color: var(--text-dim);
+  margin-bottom: 5px;
+}
+
+.highlights li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+}
+
+/* neutral grey pills for the tech stack, matching the reference's
+   tag style rather than an accent-tinted look */
+.stackRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.stackRow span {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface);
+  border: none;
+  padding: 5px 13px;
+  border-radius: 20px;
+}
+
+/* dark pill action buttons instead of plain text links */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 8px 15px;
+  transition: opacity 0.15s ease;
+}
+
+.links a:hover { opacity: 0.82; }
+
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.viewMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+  background: none;
+  border: none;
+  appearance: none;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.15s ease;
+}
+
+.viewMore:hover { color: var(--text); }
+
+.viewMore svg {
+  transition: transform 0.2s ease;
+}
+
+.viewMore .arrowUp {
+  transform: rotate(-90deg);
+}

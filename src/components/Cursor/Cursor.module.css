@@ -1,0 +1,42 @@
+/* Fixed white + mix-blend-mode: difference means the rendered pixel is
+   always the inverse of whatever's underneath it — black dot on a white
+   page, white dot on the dark scope/contact panels — with no need to
+   detect what's beneath the cursor. This is intentionally NOT theme-aware
+   (no var(--text) here): the blend mode already guarantees contrast
+   against any background, light or dark. */
+
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+}
+
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #FFFFFF;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 9998;
+  will-change: transform;
+  transition: width 0.18s ease, height 0.18s ease, margin 0.18s ease;
+}
+
+.ring.hover {
+  width: 44px;
+  height: 44px;
+  margin: -6px 0 0 -6px;
+  border-width: 1.5px;
+}

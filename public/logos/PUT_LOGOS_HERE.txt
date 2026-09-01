@@ -1,0 +1,27 @@
+Add company/school logo images to this folder to replace the plain
+black initials badges (like "DU" or "CO") with real logos.
+
+Suggested filenames (square images work best, ~100x100px or larger,
+PNG with a transparent background is ideal):
+
+    public/logos/drexel.png
+    public/logos/company-name.png
+
+Then in src/data/content.js, add a "logo" field to that entry, e.g.:
+
+    {
+      school: 'Drexel University',
+      badge: 'DU',
+      logo: '/logos/drexel.png',   ← add this line
+      ...
+    }
+
+Same pattern for experience[] entries — add "logo": '/logos/whatever.png'
+next to that entry's "orgBadge" field.
+
+If an entry has no "logo" field (or you delete the line), it falls back
+to the plain initials badge automatically — you don't need to remove
+the "badge"/"orgBadge" field, just leave "logo" out.
+
+You can delete this .txt file once you've added your logos — it's just
+a placeholder marker, not read by the app.

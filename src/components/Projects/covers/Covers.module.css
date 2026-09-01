@@ -1,0 +1,39 @@
+.codeWindow {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.9;
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ink-line);
+  display: inline-block;
+}
+
+.codeLine {
+  display: flex;
+  gap: 12px;
+  white-space: pre;
+}
+
+.ln {
+  color: var(--ink-text-dim);
+  width: 14px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.code { color: var(--ink-text-dim); }
+
+.tok-kw { color: var(--glow); }
+.tok-fn { color: var(--glow-signal); }
+.tok-num { color: var(--glow); }

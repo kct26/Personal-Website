@@ -1,0 +1,123 @@
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px; top: 6px; bottom: 6px;
+  width: 1px;
+  background: var(--line);
+}
+
+.item {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 28px 28px;
+  margin-bottom: 20px;
+}
+
+.item:last-child { margin-bottom: 0; }
+
+.item::before {
+  content: '';
+  position: absolute;
+  left: -28px; top: 32px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.item h3 { font-size: 1.25rem; color: var(--text); }
+
+/* date as a solid pill instead of faint plain text — much clearer */
+.period {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 5px 14px;
+  white-space: nowrap;
+}
+
+/* org and location now share one row */
+.subRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.org {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--text-faint);
+}
+
+.location svg { flex-shrink: 0; }
+
+/* real logo image, when item.logo is provided */
+.badge {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: contain;
+  margin-right: 10px;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+}
+
+/* fallback: solid filled initials badge, used when no logo is set —
+   same treatment as the Education badge */
+.badgeText {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 11px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.item ul {
+  color: var(--text-dim);
+  font-weight: 450;
+  font-size: 15.5px;
+  padding-left: 20px;
+  max-width: var(--bullets-max-width);
+}
+
+.item li { 
+  margin-bottom: 6px; 
+  white-space: pre-line; 
+}

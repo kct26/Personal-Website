@@ -1,0 +1,182 @@
+:root {
+  /* true black & white — light mode (default) */
+  --bg: #FFFFFF;
+  --surface: #F5F5F5;
+  --line: #DEDEDE;
+  --line-soft: #ECECEC;
+  --text: #0A0A0A;
+  --text-dim: #333333;
+  --text-faint: #6E6E6E;
+
+  /* emphasis tokens — black in light mode, flip to white in dark mode below */
+  --accent: #0A0A0A;
+  --accent-tint: rgba(10, 10, 10, 0.06);
+  --accent-soft: #B5B5B5;
+  --signal: #6B6B6B;
+  --on-accent: #FFFFFF; /* text/icon color drawn on top of an accent-filled surface */
+
+  /* instrument-screen tokens — the dark panels (scope, project covers,
+     closing CTA band) stay a fixed dark "screen" in light mode, and
+     become a slightly-raised panel in dark mode. See [data-theme="dark"] below. */
+  --ink: #0A0A0A;
+  --ink-2: #000000;
+  --ink-line: #2A2A2A;
+  --ink-text: #F5F5F5;
+  --ink-text-dim: #B0B0B0;
+  --glow: #FFFFFF;
+  --glow-signal: #9A9A9A;
+
+  --radius-sm: 8px;
+  --radius: 16px;
+  --bullets-max-width: 900px; 
+  --maxw: 1080px;
+  --nav-height: 92px;
+  --nav-bg: rgba(255, 255, 255, 0.86);
+  --status-green: #22C55E; /* semantic "available" indicator — intentionally
+                               not part of the monochrome system, stays the
+                               same in both light and dark mode */
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0A0A0A;
+  --surface: #141414;
+  --line: #2C2C2C;
+  --line-soft: #1C1C1C;
+  --text: #F5F5F5;
+  --text-dim: #B0B0B0;
+  --text-faint: #707070;
+
+  --accent: #F5F5F5;
+  --accent-tint: rgba(245, 245, 245, 0.08);
+  --accent-soft: #4A4A4A;
+  --signal: #9A9A9A;
+  --on-accent: #0A0A0A;
+
+  --ink: #1C1C1C;
+  --ink-2: #101010;
+  --ink-line: #333333;
+  --ink-text: #F5F5F5;
+  --ink-text-dim: #9A9A9A;
+  --glow: #FFFFFF;
+  --glow-signal: #B5B5B5;
+  --nav-bg: rgba(10, 10, 10, 0.86);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 17.5px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* faint grid backdrop, drawn once behind the whole app */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--accent-soft); color: var(--text); }
+
+@media (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor a,
+  body.custom-cursor button {
+    cursor: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.mono { font-family: var(--font-mono); }
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 860px) {
+  .wrap { padding-left: 22px; padding-right: 22px; }
+}
+
+/* pushes page content below the fixed nav, now that there's no marquee
+   strip in the flow to provide that offset */
+.mainOffset {
+  padding-top: var(--nav-height);
+}
+
+/* When a nav link scrolls the page to a section's #id, the browser aligns
+   that element's top edge with the viewport's top edge — which puts it
+   right under the fixed nav with no breathing room. scroll-margin-top
+   tells the browser to stop short of that by this much instead. Applied
+   as a plain element selector so every <section> gets it automatically,
+   regardless of which component or CSS module it belongs to. */
+section {
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+#top {
+  scroll-margin-top: var(--nav-height);
+}
+
+/* shared section shell — every <section> gets this unless overridden */
+.section {
+  padding: 72px 0;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 480px) {
+  .section { padding: 52px 0; }
+}
