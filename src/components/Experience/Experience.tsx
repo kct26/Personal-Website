@@ -20,7 +20,7 @@ export default function Experience() {
                   on its own line below the title */}
               <div className={styles.subRow}>
                 <div className={styles.org}>
-                  {item.logo ? (
+                  {item.logo ? ( 
                     // eslint-disable-next-line @next/next/no-img-element -- logo
                     // may not exist yet; next/image would error on a missing file
                     <img src={item.logo} alt={item.org} className={styles.badge} />
