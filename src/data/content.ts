@@ -127,19 +127,19 @@ export const hero: Hero = {
 
 export const skills: SkillGroup[] = [
   {
-    category: 'languages',
+    category: 'Languages',
     items: ['C', 'C++', 'Python', 'Verilog', 'VHDL', 'JavaScript'],
   },
   {
-    category: 'hardware / embedded',
+    category: 'Hardware / Embedded',
     items: ['STM32', 'ESP32', 'Arduino', 'FPGA', 'KiCad', 'Oscilloscope / DMM', 'I2C / SPI / UART'],
   },
   {
-    category: 'software / tools',
+    category: 'Software / Tools',
     items: ['Git', 'Linux', 'Docker', 'FreeRTOS', 'React', 'Node.js'],
   },
   {
-    category: 'concepts',
+    category: 'Concepts',
     items: ['Computer Architecture', 'Digital Logic', 'Signal Processing', 'Networking', 'RTOS Scheduling'],
   },
 ];
