@@ -10,7 +10,23 @@
 }
 
 .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   letter-spacing: 0.02em;
+}
+
+.divider {
+  opacity: 0.4;
+}
+
+.thoughtsLink {
+  color: var(--text-faint);
+  transition: color 0.15s ease;
+}
+
+.thoughtsLink:hover {
+  color: var(--text);
 }
 
 .right strong { color: var(--text); font-weight: 600; }

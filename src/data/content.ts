@@ -95,6 +95,8 @@ export interface Socials {
 export interface FooterData {
   name: string;
   year: string;
+  thoughtsLabel: string;
+  thoughtsUrl: string;
 }
 
 export const nav: Nav = {
@@ -301,4 +303,6 @@ export const sectionImages = {
 export const footer: FooterData = {
   name: 'Kyle Dang',
   year: '2026',
+  thoughtsLabel: 'kyle-thoughts.vercel.app',
+  thoughtsUrl: 'https://kyle-thoughts.vercel.app',
 };
