@@ -79,6 +79,20 @@
 
 .links a:hover::after { width: 100%; }
 
+/* white text while the nav overlaps a dark section (see
+   DARK_SECTION_IDS in Nav.tsx — currently just the hero) */
+.onDark .links {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.onDark .links a:hover {
+  color: #FFFFFF;
+}
+
+.onDark .links a::after {
+  background: #FFFFFF;
+}
+
 .right {
   display: flex;
   align-items: center;

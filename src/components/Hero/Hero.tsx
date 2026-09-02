@@ -10,7 +10,7 @@ const QUICK_LINK_ICONS = {
 
 export default function Hero() {
   return (
-    <section className={styles.heroOuter}>
+    <section id="hero" data-nav-dark className={styles.heroOuter}>
       <div
         className={styles.heroBg}
         style={{ backgroundImage: `url(${sectionImages.hero})` }}

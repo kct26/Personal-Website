@@ -297,7 +297,6 @@ export const socials: Socials = {
 // public/images/README.txt for where to add the actual files.
 export const sectionImages = {
   hero: '/images/hero-bg.jpg',  
-  skills: '/images/skills.jpg',
   contact: '/images/contact.jpg',
 };
 

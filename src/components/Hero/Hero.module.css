@@ -156,6 +156,8 @@
   border-radius: 28px;
   z-index: 0;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  filter: blur(2px);
+  opacity: 0.85;
 }
 
 .photoFrame {
@@ -198,10 +200,12 @@
 
 .heroBg {
   position: absolute;
-  inset: 0;
+  inset: -20px;
   background-size: cover;
   background-position: center;
   background-color: var(--ink);
+  filter: blur(8px); /* new — try 6–14px depending on how soft you want it */
+  transform: scale(1.05); /* new — hides the blurred edge from showing a hard cutoff */
   z-index: 0;
 }
 

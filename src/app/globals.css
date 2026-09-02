@@ -95,7 +95,6 @@
   --glow: #FFFFFF;
   --glow-signal: #B5B5B5;
   --nav-bg: transparent;
-  
   --hero-scrim: linear-gradient(180deg, rgba(12,11,8,0.55) 0%, rgba(12,11,8,0.85) 100%);
 
   --tint-bg: #1B1F17;
@@ -105,7 +104,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 18px;
+  font-size: 17.5px;
   background: var(--bg);
 }
 
