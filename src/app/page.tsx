@@ -27,12 +27,10 @@ export default function Home() {
             between content sections — NOT nested inside any single
             section's own padded column, which is what lets them span
             almost the full viewport width instead of being boxed in */}
-        <Reveal><ImageBreak src={sectionImages.skills} alt="Skills" /></Reveal>
+        <Reveal><ImageBreak src={sectionImages.skills} alt="Skills" /></Reveal>`      11`
         <Reveal><Projects /></Reveal>
         <Reveal><Experience /></Reveal>
-        <Reveal><ImageBreak src={sectionImages.experience} alt="Experience" /></Reveal>
         <Reveal><Education /></Reveal>
-        <Reveal><ImageBreak src={sectionImages.education} alt="Education" /></Reveal>
         <Reveal><Contact /></Reveal>
       </main>
       <Footer />
