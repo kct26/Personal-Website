@@ -29,7 +29,7 @@
 .card::before {
   content: '';
   position: absolute;
-  left: -28px; top: 32px;
+  left: -28px; top: 50%;
   width: 9px; height: 9px;
   border-radius: 50%;
   background: var(--bg);
