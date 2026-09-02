@@ -7,7 +7,7 @@ export default function Footer() {
       <footer className={`${styles.footer} mono`}>
         <span className={styles.left}>
           <span>© {footer.year}</span>
-          <span className={styles.divider}>/</span>
+          <span className={styles.divider}>|</span>
           <a 
             href={footer.thoughtsUrl} 
             target="_blank" 
