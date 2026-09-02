@@ -1,5 +1,6 @@
 import { hero, socials } from '@/data/content';
 import { LinkedInIcon, MailIcon, PinIcon, LinkIcon, DownloadIcon } from '../shared/icons';
+import HeroPhoto from './HeroPhoto';
 import styles from './Hero.module.css';
 
 const QUICK_LINK_ICONS = {
@@ -62,13 +63,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Photo frame — put your photo at public/profile.jpg (see README.md) */}
-      <div className={styles.photoFrame}>
-        {/* eslint-disable-next-line @next/next/no-img-element -- plain <img>
-            on purpose: the photo may not exist yet, and next/image would
-            error at build time on a missing/arbitrary user-uploaded file */}
-        <img src="/profile.jpg" alt={hero.name} className={styles.photo} />
-      </div>
+      <HeroPhoto />
     </section>
   );
 }

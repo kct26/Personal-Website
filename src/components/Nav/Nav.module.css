@@ -1,27 +1,63 @@
-.nav {
+/* Outer wrapper spans the full width and centers the actual bar inside
+   it — this is what lets the bar shrink into a centered pill on scroll
+   without the wrapper itself needing to move or resize. */
+.headerWrap {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 50;
-  height: var(--nav-height);
-  background: var(--nav-bg);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  justify-content: center;
+  padding: 0 22px;
+  pointer-events: none;
 }
 
-.inner {
-  height: 100%;
+.nav {
+  pointer-events: auto;
+  width: 100%;
+  max-width: var(--maxw);
+  margin-top: 0;
+  padding: 28px 32px;
+  border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid transparent;
+  border-bottom-color: var(--line);
+  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition:
+    max-width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    margin-top 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    padding 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background-color 0.2s ease;
+}
+
+/* the floating glass pill, once scrolled past the threshold */
+.navScrolled {
+  max-width: 620px;
+  margin-top: 14px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border-color: var(--line);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
 }
 
 .links {
   display: flex;
   gap: 34px;
   font-size: 14.5px;
+  font-weight: 700;
   color: var(--text-dim);
-  text-transform: lowercase;
+  transition: gap 0.35s ease, font-size 0.35s ease;
+}
+
+.navScrolled .links {
+  gap: 22px;
+  font-size: 13.5px;
 }
 
 .links a {
@@ -59,7 +95,7 @@
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: var(--nav-height);
+    top: calc(var(--nav-height) + 8px);
     right: 22px;
     background: var(--surface);
     border: 1px solid var(--line);

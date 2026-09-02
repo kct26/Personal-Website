@@ -19,14 +19,15 @@
 }
 
 .name {
-  font-size: clamp(2.4rem, 5.4vw, 3.8rem);
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-weight: 400;
   color: var(--text);
 }
 
 .role {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 400;
   color: var(--text-dim);
   margin-top: 8px;
 }
@@ -90,7 +91,7 @@
   font-size: 1.25rem;
   line-height: 1.55;
   color: var(--text);
-  font-weight: 500;
+  font-weight: 400;
   max-width: 62ch;
   margin-top: 24px;
   margin-bottom: 26px;
@@ -132,33 +133,65 @@
   font-weight: 500;
   padding: 12px 22px;
   border-radius: var(--radius-sm);
-  background: var(--accent);
-  color: var(--on-accent);
-  border: 1px solid var(--accent);
-  transition: background-color 0.15s ease, opacity 0.15s ease;
+  background: var(--cta);
+  color: var(--on-cta);
+  border: 1px solid var(--cta);
+  transition: background-color 0.2s ease;
 }
 
-.btnPrimary:hover { opacity: 0.82; }
+.btnPrimary:hover { background: var(--cta-hover); }
 
+/* wrapper positions the decorative shape behind the device frame */
+.photoWrap {
+  position: relative;
+}
+
+/* the sage-green rounded shape peeking out from behind the device —
+   purely decorative, sits at a lower z-index than the frame on top of it */
+.photoShape {
+  position: absolute;
+  top: 44px;
+  left: -22px;
+  right: -22px;
+  bottom: -28px;
+  background: var(--decorative-green);
+  border-radius: 28px;
+  z-index: 0;
+}
+
+/* iPad-style bezel — dark uniform border around the photo like a
+   tablet's frame, rounded corners. No text overlay (removed on
+   purpose, stays that way — just the device look, just the photo). */
 .photoFrame {
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 14px 14px 30px;
-  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.14);
-  transition: box-shadow 0.35s ease;
+  position: relative;
+  z-index: 1;
+  background: var(--ink);
+  border-radius: 26px;
+  padding: 14px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
 }
 
-.photoFrame:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
+/* front-camera dot — the small detail that actually reads as "tablet"
+   rather than just a dark rectangle with rounded corners */
+.photoFrame::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  z-index: 2;
 }
 
 .photo {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 3px;
+  object-fit: contain;
+  border-radius: 14px;
   background: var(--surface);
 }
 
@@ -169,9 +202,9 @@
     padding-bottom: 56px;
   }
   .quickLinks { align-items: flex-start; }
-  .photoFrame { max-width: 340px; }
+  .photoWrap { max-width: 360px; }
 }
 
 @media (max-width: 480px) {
-  .name { font-size: 2rem; }
+  .name { font-size: 2.1rem; }
 }

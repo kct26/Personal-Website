@@ -9,9 +9,7 @@
 
 .head h2 {
   font-size: 2.5rem;
-  font-weight: 600;
   color: var(--text);
-  text-transform: lowercase;
 }
 
 .dark h2 {

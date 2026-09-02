@@ -1,6 +1,7 @@
-import { contact } from '@/data/content';
+import { contact, sectionImages } from '@/data/content';
 import { MailIcon, GitHubIcon, LinkedInIcon, FacebookIcon, InstagramIcon } from '../shared/icons';
 import SectionHeader from '../shared/SectionHeader';
+import SideImage from '../shared/SideImage';
 import styles from './Contact.module.css';
 import type { ComponentType, SVGProps } from 'react';
 
@@ -17,15 +18,18 @@ export default function Contact() {
     <section id="contact" className="section">
       <div className="wrap">
         <SectionHeader title="Contact" />
-        <div className={styles.iconRow}>
-          {contact.links.map((link) => {
-            const Icon = CONTACT_ICONS[link.label];
-            return (
-              <a key={link.label} href={link.href} className={styles.icon} aria-label={link.label}>
-                {Icon && <Icon />}
-              </a>
-            );
-          })}
+        <div className={styles.layout}>
+          <div className={styles.iconRow}>
+            {contact.links.map((link) => {
+              const Icon = CONTACT_ICONS[link.label];
+              return (
+                <a key={link.label} href={link.href} className={styles.icon} aria-label={link.label}>
+                  {Icon && <Icon />}
+                </a>
+              );
+            })}
+          </div>
+          <SideImage src={sectionImages.contact} alt="Contact" />
         </div>
       </div>
     </section>

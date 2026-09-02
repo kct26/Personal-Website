@@ -1,5 +1,5 @@
-import type { Metadata } from 'next';
-import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
+import { Crimson_Text, DM_Sans, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 
 // next/font/google downloads and self-hosts these at build time (no
@@ -7,17 +7,27 @@ import './globals.css';
 // tag, no layout shift while fonts load) — the CSS variable each one
 // exposes is what globals.css's --font-display/--font-body/--font-mono
 // tokens point at.
-const fraunces = Fraunces({
+//
+// Crimson Text — not Fraunces. Confirmed by inspecting the reference
+// site's actual computed font-family directly; it only ships weights
+// 400 (regular), 600, and 700, and its "boldness" comes from the
+// letterforms' natural thick/thin stroke contrast, not a heavy weight.
+const crimsonText = Crimson_Text({
   subsets: ['latin'],
-  weight: 'variable',
-  variable: '--font-fraunces',
+  weight: ['400', '600', '700'],
+  variable: '--font-crimson',
   display: 'swap',
 });
 
-const plexSans = IBM_Plex_Sans({
+// DM Sans — not IBM Plex Sans. Also confirmed by inspecting the
+// reference's computed styles (used at both "Bold" and "Regular").
+// Loaded as a variable font so every weight already tuned per-element
+// across the site (400/450/500/600/700, etc.) renders faithfully
+// without needing to normalize each one to a fixed static weight.
+const dmSans = DM_Sans({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-plex-sans',
+  weight: 'variable',
+  variable: '--font-dm-sans',
   display: 'swap',
 });
 
@@ -37,9 +47,17 @@ export const metadata: Metadata = {
   },
 };
 
+// Tints the mobile browser's own UI chrome (address bar area) to match
+// the page background. Set to the light color since that's always the
+// default on first visit (see ThemeToggle) — it's updated dynamically
+// by ThemeToggle itself once someone actually switches to dark mode.
+export const viewport: Viewport = {
+  themeColor: '#FFFFFF',
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${plexSans.variable} ${plexMono.variable}`}>
+    <html lang="en" className={`${crimsonText.variable} ${dmSans.variable} ${plexMono.variable}`}>
       <body>{children}</body>
     </html>
   );

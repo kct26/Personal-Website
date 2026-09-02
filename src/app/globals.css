@@ -1,32 +1,46 @@
 :root {
-  /* true black & white — light mode (default) */
+  /* true white surface, matching the reference exactly */
   --bg: #FFFFFF;
-  --surface: #F5F5F5;
-  --line: #DEDEDE;
-  --line-soft: #ECECEC;
-  --text: #0A0A0A;
-  --text-dim: #333333;
-  --text-faint: #6E6E6E;
+  --surface: #F7F6F3;
+  --line: #E6E4DD;
+  --line-soft: #F0EFEA;
+  --text: #14130F;
+  --text-dim: #47443B;
+  --text-faint: #7A7566;
 
-  /* emphasis tokens — black in light mode, flip to white in dark mode below */
-  --accent: #0A0A0A;
-  --accent-tint: rgba(10, 10, 10, 0.06);
-  --accent-soft: #B5B5B5;
-  --signal: #6B6B6B;
+  /* emphasis tokens — dark neutral in light mode, flip to off-white in
+     dark mode below. Used for text/borders, NOT for primary CTA
+     buttons — those use --cta (green) instead. */
+  --accent: #14130F;
+  --accent-tint: rgba(20, 19, 15, 0.06);
+  --accent-soft: #C7BFA9;
+  --signal: #7A7566;
   --on-accent: #FFFFFF; /* text/icon color drawn on top of an accent-filled surface */
 
-  /* semantic "available" indicator — intentionally not part of the
-     monochrome system, stays the same in both light and dark mode */
+  /* primary CTA green — the one deliberate color accent, used only for
+     the main call-to-action buttons (Hero's "View projects", project
+     source/demo links), so it stays meaningful instead of overused */
+  --cta: #2F6D4F;
+  --cta-hover: #275C43;
+  --on-cta: #FFFFFF;
+
+  /* muted sage green for the decorative shape behind the hero photo —
+     deliberately softer/lighter than --cta so the two greens read as
+     related but distinct (one is a button, one is a background shape) */
+  --decorative-green: #8C9573;
+
+  /* semantic "available" indicator — separate token so it can differ
+     from --cta even though both are green right now */
   --status-green: #22C55E;
 
   /* instrument-screen tokens — the dark panels (project covers, closing
      CTA band) stay a fixed dark "screen" in light mode, and become a
      slightly-raised panel in dark mode. See [data-theme="dark"] below. */
-  --ink: #0A0A0A;
-  --ink-2: #000000;
-  --ink-line: #2A2A2A;
-  --ink-text: #F5F5F5;
-  --ink-text-dim: #B0B0B0;
+  --ink: #14130F;
+  --ink-2: #0C0B08;
+  --ink-line: #2C2A22;
+  --ink-text: #FFFFFF;
+  --ink-text-dim: #B8B2A0;
   --glow: #FFFFFF;
   --glow-signal: #9A9A9A;
 
@@ -34,41 +48,45 @@
   --radius: 16px;
   --maxw: 1080px;
   --nav-height: 92px;
-  --nav-bg: rgba(255, 255, 255, 0.86);
+  --nav-bg: transparent;
 
   /* single source of truth for how wide a bullet list (Experience or
      Education) can grow before wrapping — change this one value to
      resize both sections' lists together */
   --bullets-max-width: 900px;
 
-  --font-display: var(--font-fraunces), serif;
-  --font-body: var(--font-plex-sans), sans-serif;
+  --font-display: var(--font-crimson), serif;
+  --font-body: var(--font-dm-sans), sans-serif;
   --font-mono: var(--font-plex-mono), monospace;
 }
 
 [data-theme='dark'] {
-  --bg: #0A0A0A;
-  --surface: #141414;
-  --line: #2C2C2C;
-  --line-soft: #1C1C1C;
-  --text: #F5F5F5;
-  --text-dim: #B0B0B0;
-  --text-faint: #707070;
+  --bg: #161410;
+  --surface: #1F1C16;
+  --line: #332F26;
+  --line-soft: #26221B;
+  --text: #F5F1E6;
+  --text-dim: #C2BBA8;
+  --text-faint: #857F6C;
 
-  --accent: #F5F5F5;
-  --accent-tint: rgba(245, 245, 245, 0.08);
-  --accent-soft: #4A4A4A;
-  --signal: #9A9A9A;
-  --on-accent: #0A0A0A;
+  --accent: #F5F1E6;
+  --accent-tint: rgba(245, 241, 230, 0.08);
+  --accent-soft: #514C3D;
+  --signal: #9A937D;
+  --on-accent: #161410;
 
-  --ink: #1C1C1C;
-  --ink-2: #101010;
-  --ink-line: #333333;
-  --ink-text: #F5F5F5;
-  --ink-text-dim: #9A9A9A;
+  --cta: #4C9273;
+  --cta-hover: #5CA684;
+  --on-cta: #10150F;
+
+  --ink: #26221B;
+  --ink-2: #17140F;
+  --ink-line: #3D3829;
+  --ink-text: #F5F1E6;
+  --ink-text-dim: #9A937D;
   --glow: #FFFFFF;
   --glow-signal: #B5B5B5;
-  --nav-bg: rgba(10, 10, 10, 0.86);
+  --nav-bg: transparent;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -76,6 +94,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 17.5px;
+  background: var(--bg);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -102,30 +121,8 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* faint grid backdrop, drawn once behind the whole app */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--line-soft) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-size: 48px 48px;
-  opacity: 0.6;
-  pointer-events: none;
-  z-index: 0;
-}
-
 a { color: inherit; text-decoration: none; }
 ::selection { background: var(--accent-soft); color: var(--text); }
-
-@media (pointer: fine) {
-  body.custom-cursor,
-  body.custom-cursor a,
-  body.custom-cursor button {
-    cursor: none;
-  }
-}
 
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -134,7 +131,7 @@ a { color: inherit; text-decoration: none; }
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1.25;
   text-wrap: balance;

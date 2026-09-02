@@ -60,7 +60,7 @@
 
 .body p {
   color: var(--text-dim);
-  font-weight: 450;
+  font-weight: 400;
   font-size: 14px;
   margin-bottom: 14px;
 }
@@ -116,14 +116,14 @@
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
-  color: var(--on-accent);
-  background: var(--accent);
+  color: var(--on-cta);
+  background: var(--cta);
   border-radius: 999px;
   padding: 8px 15px;
-  transition: opacity 0.15s ease;
+  transition: background-color 0.2s ease;
 }
 
-.links a:hover { opacity: 0.82; }
+.links a:hover { background: var(--cta-hover); }
 
 .viewMore {
   display: inline-flex;

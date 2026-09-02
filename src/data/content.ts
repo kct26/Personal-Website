@@ -291,6 +291,15 @@ export const socials: Socials = {
   linkedin: { label: 'linkedin.com/in/kyledang2522', href: 'https://www.linkedin.com/in/kyledang2522/' },
 };
 
+// Photo banners shown in the middle of each section — see
+// public/images/README.txt for where to add the actual files.
+export const sectionImages = {
+  skills: '/images/skills.jpg',
+  experience: '/images/experience.jpg',
+  education: '/images/education.jpg',
+  contact: '/images/contact.jpg',
+};
+
 export const footer: FooterData = {
   name: 'Kyle Dang',
   year: '2026',
