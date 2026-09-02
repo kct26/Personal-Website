@@ -1,13 +1,11 @@
-import { hero, socials } from '../../data/content.js';
-import { LinkedInIcon, MailIcon, PinIcon, LinkIcon, DownloadIcon } from '../shared/icons.jsx';
+import { hero, socials } from '@/data/content';
+import { LinkedInIcon, MailIcon, PinIcon, LinkIcon, DownloadIcon } from '../shared/icons';
 import styles from './Hero.module.css';
 
-// maps hero.quickLinks[].icon → icon component (same pattern as the
-// project cover lookup in ProjectCard.jsx)
 const QUICK_LINK_ICONS = {
   download: DownloadIcon,
   link: LinkIcon,
-};
+} as const;
 
 export default function Hero() {
   return (
@@ -64,14 +62,12 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Tilted photo-card frame. Put your photo at public/profile.jpg
-          (see README.md) — it'll show up here automatically at that path. */}
+      {/* Photo frame — put your photo at public/profile.jpg (see README.md) */}
       <div className={styles.photoFrame}>
-        <img
-          src="/profile.jpg"
-          alt={hero.name}
-          className={styles.photo}
-        />
+        {/* eslint-disable-next-line @next/next/no-img-element -- plain <img>
+            on purpose: the photo may not exist yet, and next/image would
+            error at build time on a missing/arbitrary user-uploaded file */}
+        <img src="/profile.jpg" alt={hero.name} className={styles.photo} />
       </div>
     </section>
   );

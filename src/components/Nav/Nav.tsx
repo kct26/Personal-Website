@@ -1,6 +1,8 @@
+'use client';
+
 import { useState } from 'react';
-import { nav } from '../../data/content.js';
-import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx';
+import { nav } from '@/data/content';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import styles from './Nav.module.css';
 
 export default function Nav() {

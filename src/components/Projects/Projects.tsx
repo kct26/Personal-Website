@@ -1,8 +1,10 @@
+'use client';
+
 import { useState } from 'react';
-import { projects } from '../../data/content.js';
-import SectionHeader from '../shared/SectionHeader.jsx';
-import { ArrowIcon } from '../shared/icons.jsx';
-import ProjectCard from './ProjectCard.jsx';
+import { projects } from '@/data/content';
+import SectionHeader from '../shared/SectionHeader';
+import { ArrowIcon } from '../shared/icons';
+import ProjectCard from './ProjectCard';
 import styles from './Projects.module.css';
 
 const PREVIEW_COUNT = 2;

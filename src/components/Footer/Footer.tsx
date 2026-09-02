@@ -1,4 +1,4 @@
-import { footer } from '../../data/content.js';
+import { footer } from '@/data/content';
 import styles from './Footer.module.css';
 
 export default function Footer() {

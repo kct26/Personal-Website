@@ -1,9 +1,8 @@
 /* Fixed white + mix-blend-mode: difference means the rendered pixel is
    always the inverse of whatever's underneath it — black dot on a white
    page, white dot on the dark scope/contact panels — with no need to
-   detect what's beneath the cursor. This is intentionally NOT theme-aware
-   (no var(--text) here): the blend mode already guarantees contrast
-   against any background, light or dark. */
+   detect what's beneath the cursor. This is intentionally NOT theme-aware:
+   the blend mode already guarantees contrast against any background. */
 
 .dot {
   position: fixed;

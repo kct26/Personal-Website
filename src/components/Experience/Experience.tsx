@@ -1,6 +1,6 @@
-import { experience } from '../../data/content.js';
-import SectionHeader from '../shared/SectionHeader.jsx';
-import { PinIcon } from '../shared/icons.jsx';
+import { experience } from '@/data/content';
+import SectionHeader from '../shared/SectionHeader';
+import { PinIcon } from '../shared/icons';
 import styles from './Experience.module.css';
 
 export default function Experience() {
@@ -16,11 +16,13 @@ export default function Experience() {
                 <span className={`${styles.period} mono`}>{item.period}</span>
               </div>
 
-              {/* org and location now share one row instead of org sitting
+              {/* org and location share one row instead of org sitting
                   on its own line below the title */}
               <div className={styles.subRow}>
                 <div className={styles.org}>
                   {item.logo ? (
+                    // eslint-disable-next-line @next/next/no-img-element -- logo
+                    // may not exist yet; next/image would error on a missing file
                     <img src={item.logo} alt={item.org} className={styles.badge} />
                   ) : (
                     <span className={`${styles.badgeText} mono`}>{item.orgBadge}</span>
@@ -33,7 +35,7 @@ export default function Experience() {
                 </span>
               </div>
 
-              <ul>
+              <ul className={styles.bulletList}>
                 {item.bullets.map((b, i) => <li key={i}>{b}</li>)}
               </ul>
             </div>

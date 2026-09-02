@@ -1,6 +1,6 @@
-import { education } from '../../data/content.js';
-import SectionHeader from '../shared/SectionHeader.jsx';
-import { PinIcon } from '../shared/icons.jsx';
+import { education } from '@/data/content';
+import SectionHeader from '../shared/SectionHeader';
+import { PinIcon } from '../shared/icons';
 import styles from './Education.module.css';
 
 export default function Education() {
@@ -14,6 +14,8 @@ export default function Education() {
               <div>
                 <h3 className={styles.school}>
                   {entry.logo ? (
+                    // eslint-disable-next-line @next/next/no-img-element -- logo
+                    // may not exist yet; next/image would error on a missing file
                     <img src={entry.logo} alt={entry.school} className={styles.badge} />
                   ) : (
                     <span className={`${styles.badgeText} mono`}>{entry.badge}</span>
@@ -22,9 +24,9 @@ export default function Education() {
                 </h3>
                 <div className={styles.degree}>{entry.degree}</div>
                 {entry.bullets.length > 0 && (
-                  <ul className={styles.bullets}>
-                    {entry.bullets.map((c) => (
-                      <li key={c}>{c}</li>
+                  <ul className={styles.bulletList}>
+                    {entry.bullets.map((b) => (
+                      <li key={b}>{b}</li>
                     ))}
                   </ul>
                 )}

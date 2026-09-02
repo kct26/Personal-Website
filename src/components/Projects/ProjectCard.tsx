@@ -1,19 +1,20 @@
-import CodeCover from './covers/CodeCover.jsx';
-import CircuitCover from './covers/CircuitCover.jsx';
-import ChartCover from './covers/ChartCover.jsx';
-import PathCover from './covers/PathCover.jsx';
+import type { Project } from '@/data/content';
+import CodeCover from './covers/CodeCover';
+import CircuitCover from './covers/CircuitCover';
+import ChartCover from './covers/ChartCover';
+import PathCover from './covers/PathCover';
 import styles from './Projects.module.css';
 
-// Maps the `cover` string in content.js to the illustration component.
+// Maps the `cover` string in content.ts to the illustration component.
 // Add a new key here if you add a new cover type.
 const COVERS = {
   code: CodeCover,
   circuit: CircuitCover,
   chart: ChartCover,
   path: PathCover,
-};
+} as const;
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project }: { project: Project }) {
   const Cover = COVERS[project.cover] ?? CircuitCover;
 
   return (

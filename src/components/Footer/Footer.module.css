@@ -9,6 +9,10 @@
   gap: 14px;
 }
 
+.left {
+  letter-spacing: 0.02em;
+}
+
 .right strong { color: var(--text); font-weight: 600; }
 
 @media (max-width: 860px) {

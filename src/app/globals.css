@@ -15,9 +15,13 @@
   --signal: #6B6B6B;
   --on-accent: #FFFFFF; /* text/icon color drawn on top of an accent-filled surface */
 
-  /* instrument-screen tokens — the dark panels (scope, project covers,
-     closing CTA band) stay a fixed dark "screen" in light mode, and
-     become a slightly-raised panel in dark mode. See [data-theme="dark"] below. */
+  /* semantic "available" indicator — intentionally not part of the
+     monochrome system, stays the same in both light and dark mode */
+  --status-green: #22C55E;
+
+  /* instrument-screen tokens — the dark panels (project covers, closing
+     CTA band) stay a fixed dark "screen" in light mode, and become a
+     slightly-raised panel in dark mode. See [data-theme="dark"] below. */
   --ink: #0A0A0A;
   --ink-2: #000000;
   --ink-line: #2A2A2A;
@@ -28,20 +32,21 @@
 
   --radius-sm: 8px;
   --radius: 16px;
-  --bullets-max-width: 900px; 
   --maxw: 1080px;
   --nav-height: 92px;
   --nav-bg: rgba(255, 255, 255, 0.86);
-  --status-green: #22C55E; /* semantic "available" indicator — intentionally
-                               not part of the monochrome system, stays the
-                               same in both light and dark mode */
 
-  --font-display: 'Fraunces', serif;
-  --font-body: 'IBM Plex Sans', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  /* single source of truth for how wide a bullet list (Experience or
+     Education) can grow before wrapping — change this one value to
+     resize both sections' lists together */
+  --bullets-max-width: 900px;
+
+  --font-display: var(--font-fraunces), serif;
+  --font-body: var(--font-plex-sans), sans-serif;
+  --font-mono: var(--font-plex-mono), monospace;
 }
 
-:root[data-theme='dark'] {
+[data-theme='dark'] {
   --bg: #0A0A0A;
   --surface: #141414;
   --line: #2C2C2C;
@@ -68,7 +73,10 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; font-size: 17.5px; }
+html {
+  scroll-behavior: smooth;
+  font-size: 17.5px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -162,7 +170,7 @@ p {
    right under the fixed nav with no breathing room. scroll-margin-top
    tells the browser to stop short of that by this much instead. Applied
    as a plain element selector so every <section> gets it automatically,
-   regardless of which component or CSS module it belongs to. */
+   regardless of which component it belongs to. */
 section {
   scroll-margin-top: calc(var(--nav-height) + 16px);
 }

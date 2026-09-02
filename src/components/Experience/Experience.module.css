@@ -43,7 +43,6 @@
 
 .item h3 { font-size: 1.25rem; color: var(--text); }
 
-/* date as a solid pill instead of faint plain text — much clearer */
 .period {
   font-size: 13px;
   font-weight: 500;
@@ -55,7 +54,6 @@
   white-space: nowrap;
 }
 
-/* org and location now share one row */
 .subRow {
   display: flex;
   justify-content: space-between;
@@ -82,20 +80,20 @@
 
 .location svg { flex-shrink: 0; }
 
-/* real logo image, when item.logo is provided */
 .badge {
   display: block;
   width: 32px;
   height: 32px;
+  padding: 3px;
+  box-sizing: border-box;
   border-radius: 50%;
   object-fit: contain;
+  background: var(--bg);
   margin-right: 10px;
   flex-shrink: 0;
   border: 1px solid var(--line);
 }
 
-/* fallback: solid filled initials badge, used when no logo is set —
-   same treatment as the Education badge */
 .badgeText {
   display: inline-flex;
   align-items: center;
@@ -109,7 +107,8 @@
   flex-shrink: 0;
 }
 
-.item ul {
+.bulletList {
+  list-style: none;
   color: var(--text-dim);
   font-weight: 450;
   font-size: 15.5px;
@@ -117,7 +116,15 @@
   max-width: var(--bullets-max-width);
 }
 
-.item li { 
-  margin-bottom: 6px; 
-  white-space: pre-line; 
+.bulletList li {
+  position: relative;
+  margin-bottom: 6px;
+  white-space: pre-line;
+}
+
+.bulletList li::before {
+  content: '-';
+  position: absolute;
+  left: -16px;
+  color: var(--text-faint);
 }

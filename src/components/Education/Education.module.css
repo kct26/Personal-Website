@@ -1,5 +1,3 @@
-/* timeline + card treatment now exactly mirrors Experience — same
-   vertical line, dot markers, card fill, border, and radius */
 .timeline {
   position: relative;
   padding-left: 28px;
@@ -45,19 +43,20 @@
   margin-bottom: 8px;
 }
 
-/* real logo image, when entry.logo is provided */
 .badge {
   display: block;
   width: 32px;
   height: 32px;
+  padding: 3px;
+  box-sizing: border-box;
   border-radius: 50%;
   object-fit: contain;
+  background: var(--bg);
   margin-right: 10px;
   flex-shrink: 0;
   border: 1px solid var(--line);
 }
 
-/* fallback: solid filled initials badge, used when no logo is set */
 .badgeText {
   display: inline-flex;
   align-items: center;
@@ -72,6 +71,29 @@
 }
 
 .degree { color: var(--text-dim); font-weight: 450; font-size: 15px; margin-bottom: 10px; }
+
+.bulletList {
+  list-style: none;
+  color: var(--text-dim);
+  font-weight: 450;
+  font-size: 14.5px;
+  max-width: var(--bullets-max-width);
+  margin-top: 4px;
+  padding-left: 16px;
+}
+
+.bulletList li {
+  position: relative;
+  margin-bottom: 4px;
+  white-space: pre-line;
+}
+
+.bulletList li::before {
+  content: '-';
+  position: absolute;
+  left: -16px;
+  color: var(--text-faint);
+}
 
 .metaRight {
   display: flex;
@@ -91,7 +113,6 @@
 
 .location svg { flex-shrink: 0; }
 
-/* date as a solid pill — same treatment as the Experience timeline */
 .period {
   font-size: 13px;
   font-weight: 500;
@@ -101,30 +122,6 @@
   border-radius: 20px;
   padding: 5px 14px;
   white-space: nowrap;
-}
-
-.bullets {
-  list-style: none;
-  color: var(--text-dim);
-  font-weight: 450;
-  font-size: 14.5px;
-  max-width: 520px;
-  margin-top: 4px;
-  padding-left: 16px;
-  max-width: var(--bullets-max-width); 
-}
-
-.bullets li {
-  position: relative;
-  margin-bottom: 4px;
-  white-space: pre-line; 
-}
-
-.bullets li::before {
-  content: '-';
-  position: absolute;
-  left: -16px;
-  color: var(--text-faint);
 }
 
 @media (max-width: 860px) {

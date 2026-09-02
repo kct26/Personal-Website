@@ -1,5 +1,5 @@
-import { skills } from '../../data/content.js';
-import SectionHeader from '../shared/SectionHeader.jsx';
+import { skills } from '@/data/content';
+import SectionHeader from '../shared/SectionHeader';
 import styles from './Skills.module.css';
 
 export default function Skills() {

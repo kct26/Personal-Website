@@ -1,11 +1,10 @@
-import { contact } from '../../data/content.js';
-import { MailIcon, GitHubIcon, LinkedInIcon, FacebookIcon, InstagramIcon } from '../shared/icons.jsx';
-import SectionHeader from '../shared/SectionHeader.jsx';
+import { contact } from '@/data/content';
+import { MailIcon, GitHubIcon, LinkedInIcon, FacebookIcon, InstagramIcon } from '../shared/icons';
+import SectionHeader from '../shared/SectionHeader';
 import styles from './Contact.module.css';
+import type { ComponentType, SVGProps } from 'react';
 
-// maps a contact.links[].label to its icon — same lookup pattern used
-// for project covers and hero quick-link icons
-const CONTACT_ICONS = {
+const CONTACT_ICONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
   Email: MailIcon,
   GitHub: GitHubIcon,
   LinkedIn: LinkedInIcon,

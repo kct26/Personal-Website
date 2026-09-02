@@ -1,5 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+'use client';
+
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import styles from './Reveal.module.css';
+
+interface RevealProps {
+  children: ReactNode;
+  className?: string;
+}
 
 /**
  * Wraps a section so it fades and slides into place the first time it
@@ -8,8 +15,8 @@ import styles from './Reveal.module.css';
  * frame. Unobserves itself once triggered — the animation only plays once
  * per page load, not every time you scroll back up and down past it.
  */
-export default function Reveal({ children, className = '' }) {
-  const ref = useRef(null);
+export default function Reveal({ children, className = '' }: RevealProps) {
+  const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

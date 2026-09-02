@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import styles from './Cursor.module.css';
 
@@ -6,8 +8,8 @@ const RING_SIZE = 32;
 const EASE = 0.18;
 
 export default function Cursor() {
-  const dotRef = useRef(null);
-  const ringRef = useRef(null);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
 
   // Only render the custom cursor for devices with a real mouse —
@@ -23,9 +25,9 @@ export default function Cursor() {
 
     const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const ring = { x: pos.x, y: pos.y };
-    let frameId;
+    let frameId: number;
 
-    function handleMove(e) {
+    function handleMove(e: MouseEvent) {
       pos.x = e.clientX;
       pos.y = e.clientY;
       if (dotRef.current) {
@@ -33,11 +35,13 @@ export default function Cursor() {
       }
     }
 
-    function handleOver(e) {
-      if (e.target.closest('a, button')) ringRef.current?.classList.add(styles.hover);
+    function handleOver(e: MouseEvent) {
+      const target = e.target as HTMLElement;
+      if (target.closest('a, button')) ringRef.current?.classList.add(styles.hover);
     }
-    function handleOut(e) {
-      if (e.target.closest('a, button')) ringRef.current?.classList.remove(styles.hover);
+    function handleOut(e: MouseEvent) {
+      const target = e.target as HTMLElement;
+      if (target.closest('a, button')) ringRef.current?.classList.remove(styles.hover);
     }
 
     function loop() {

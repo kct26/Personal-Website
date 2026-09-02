@@ -1,27 +1,19 @@
 Add company/school logo images to this folder to replace the plain
 black initials badges (like "DU" or "CO") with real logos.
 
-Suggested filenames (square images work best, ~100x100px or larger,
-PNG with a transparent background is ideal):
+Based on src/data/content.ts, this project already expects:
 
-    public/logos/drexel.png
-    public/logos/company-name.png
+    public/logos/drexel.jpg
+    public/logos/lhp.jpg
 
-Then in src/data/content.js, add a "logo" field to that entry, e.g.:
+The "logo" field on each experience[]/education[] entry in content.ts
+already points at these paths — just drop matching image files in here
+and refresh. Any reasonably-sized image works; the badge automatically
+shows the whole logo uncropped and centered (object-fit: contain), so
+you don't need to pre-scale or crop anything.
 
-    {
-      school: 'Drexel University',
-      badge: 'DU',
-      logo: '/logos/drexel.png',   ← add this line
-      ...
-    }
-
-Same pattern for experience[] entries — add "logo": '/logos/whatever.png'
-next to that entry's "orgBadge" field.
-
-If an entry has no "logo" field (or you delete the line), it falls back
-to the plain initials badge automatically — you don't need to remove
-the "badge"/"orgBadge" field, just leave "logo" out.
+If an entry has no "logo" field (or you delete the line in content.ts),
+it falls back to the plain initials badge automatically.
 
 You can delete this .txt file once you've added your logos — it's just
 a placeholder marker, not read by the app.

@@ -85,8 +85,6 @@
   color: var(--text-faint);
 }
 
-/* neutral grey pills for the tech stack, matching the reference's
-   tag style rather than an accent-tinted look */
 .stackRow {
   display: flex;
   flex-wrap: wrap;
@@ -105,7 +103,6 @@
   border-radius: 20px;
 }
 
-/* dark pill action buttons instead of plain text links */
 .links {
   display: flex;
   flex-wrap: wrap;
@@ -127,10 +124,6 @@
 }
 
 .links a:hover { opacity: 0.82; }
-
-@media (max-width: 720px) {
-  .grid { grid-template-columns: 1fr; }
-}
 
 .viewMore {
   display: inline-flex;
@@ -156,4 +149,8 @@
 
 .viewMore .arrowUp {
   transform: rotate(-90deg);
+}
+
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
 }

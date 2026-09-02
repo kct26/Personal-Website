@@ -18,14 +18,11 @@
   margin-bottom: 22px;
 }
 
-/* bold serif headline, sized closer to the reference — this is the
-   loudest thing on the page, everything else stays quieter */
 .name {
   font-size: clamp(2.4rem, 5.4vw, 3.8rem);
   color: var(--text);
 }
 
-/* subheader — bold and legible, not a tiny caption like before */
 .role {
   font-family: var(--font-body);
   font-size: 1.05rem;
@@ -122,6 +119,10 @@
 
 .contactRow a:hover { color: var(--text); }
 
+.cta {
+  display: block;
+}
+
 .btnPrimary {
   display: inline-flex;
   align-items: center;
@@ -139,7 +140,6 @@
 
 .btnPrimary:hover { opacity: 0.82; }
 
-/* photo frame: white border, soft shadow, upright (no tilt) */
 .photoFrame {
   background: var(--bg);
   border: 1px solid var(--line);
@@ -159,8 +159,6 @@
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: 3px;
-  /* gives the broken-image icon a sane background before a real photo
-     is added at public/profile.jpg */
   background: var(--surface);
 }
 

@@ -3,29 +3,101 @@
 // Edit this file to update the site — you should not need to
 // touch any component file for a content change.
 // ============================================================
-//
-// STILL TO FILL IN (search these fields below):
-//   - hero.quickLinks[0].href       → link to your resume PDF
-//   - hero.quickLinks[1].href       → your GitHub URL
-//   - hero.bio                     → short bio, still fairly generic
-//   - projects[]                  → 4 placeholder projects — swap
-//                                    in your real ones (title,
-//                                    description, highlights, stack,
-//                                    links)
-//   - experience[]                → placeholder roles — swap in
-//                                    your real internship/RA/TA info
-//   - education[1].period          → placeholder dates for Lê Hồng
-//                                    Phong — update with the real years
-//   - education[0].bullets         → confirm this list matches yours,
-//                                    add GPA if you want it shown
-//   - contact.links                → GitHub, Facebook, Instagram URLs
-//   - logos (optional)             → see public/logos/PUT_LOGOS_HERE.txt
-//                                    to replace initials badges with
-//                                    real company/school logos
-// Already filled in: name, email, LinkedIn.
-// ============================================================
 
-export const nav = {
+export interface NavLink {
+  label: string;
+  href: string;
+}
+
+export interface Nav {
+  links: NavLink[];
+}
+
+export interface QuickLink {
+  label: string;
+  href: string;
+  icon: 'download' | 'link';
+}
+
+export interface Hero {
+  avatarInitials: string;
+  name: string;
+  wave: string;
+  role: string;
+  bio: string[];
+  location: string;
+  availability: string;
+  quickLinks: QuickLink[];
+  primaryCta: { label: string; href: string };
+}
+
+export interface SkillGroup {
+  category: string;
+  items: string[];
+}
+
+export type ProjectCoverType = 'code' | 'circuit' | 'chart' | 'path';
+
+export interface ProjectLink {
+  label: string;
+  href: string;
+}
+
+export interface Project {
+  cover: ProjectCoverType;
+  title: string;
+  tag: string;
+  description: string;
+  highlights: string[];
+  stack: string[];
+  links: ProjectLink[];
+}
+
+export interface ExperienceItem {
+  title: string;
+  period: string;
+  org: string;
+  orgBadge: string;
+  logo?: string;
+  location: string;
+  bullets: string[];
+}
+
+export interface EducationEntry {
+  school: string;
+  badge: string;
+  logo?: string;
+  degree: string;
+  location: string;
+  period: string;
+  bullets: string[];
+}
+
+export interface ContactLink {
+  label: string;
+  href: string;
+}
+
+export interface Contact {
+  links: ContactLink[];
+}
+
+export interface SocialEntry {
+  label: string;
+  href: string;
+}
+
+export interface Socials {
+  email: SocialEntry;
+  linkedin: SocialEntry;
+}
+
+export interface FooterData {
+  name: string;
+  year: string;
+}
+
+export const nav: Nav = {
   links: [
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
@@ -34,7 +106,7 @@ export const nav = {
   ],
 };
 
-export const hero = {
+export const hero: Hero = {
   avatarInitials: 'KD',
   name: 'Kyle Dang',
   wave: '👋',
@@ -51,7 +123,7 @@ export const hero = {
   primaryCta: { label: 'View projects', href: '#projects' },
 };
 
-export const skills = [
+export const skills: SkillGroup[] = [
   {
     category: 'languages',
     items: ['C', 'C++', 'Python', 'Verilog', 'VHDL', 'JavaScript'],
@@ -70,9 +142,7 @@ export const skills = [
   },
 ];
 
-// `cover` selects which illustrated cover component renders at the top of
-// the card — see components/Projects/covers/. Options: 'code' | 'circuit' | 'chart' | 'path'
-export const projects = [
+export const projects: Project[] = [
   {
     cover: 'code',
     title: 'Battery Management Firmware',
@@ -135,7 +205,7 @@ export const projects = [
   },
 ];
 
-export const experience = [
+export const experience: ExperienceItem[] = [
   {
     title: 'Embedded Systems Intern',
     period: 'Summer 2026',
@@ -170,10 +240,9 @@ export const experience = [
   },
 ];
 
-// education is a list now (like experience) so the section can show
-// more than one entry with a matching timeline on the left.
-// NOTE: dates for Lê Hồng Phong are a placeholder — update with the real years.
-export const education = [
+// NOTE: dates for Lê Hồng Phong are whatever you last set in the Vite
+// version — double check them here since this file was ported by hand.
+export const education: EducationEntry[] = [
   {
     school: 'Drexel University',
     badge: 'DU',
@@ -182,7 +251,12 @@ export const education = [
     location: 'Philadelphia, PA',
     period: 'August 2026 — May 2030 (expected)',
     bullets: [
-      'Courseworks: Digital Logic Design, Computer Architecture, Embedded Systems, Signals & Systems, Data Structures, Operating Systems',
+      'Digital Logic Design',
+      'Computer Architecture',
+      'Embedded Systems',
+      'Signals & Systems',
+      'Data Structures',
+      'Operating Systems',
     ],
   },
   {
@@ -193,14 +267,13 @@ export const education = [
     location: 'Ho Chi Minh City, Vietnam',
     period: 'August 2023 - May 2026',
     bullets: [
-      `AP Calculus BC: 5/5, AP Computer Science A: 5/5, AP Statistics: 4/5,
-       AP Physics C Mechanics: 4/5, AP Physics C E&M : 4/5`,
-      'Lumiere Photography Club',
+      'AP Calculus BC: 5/5, AP Computer Science A: 5/5, AP Statistics: 4/5,\nAP Physics C Mechanics: 4/5, AP Physics C E&M: 4/5',
+      'Activities: Lumiere Photography Club',
     ],
   },
 ];
 
-export const contact = {
+export const contact: Contact = {
   links: [
     { label: 'Email', href: 'mailto:dangmkhoa2522@gmail.com' },
     { label: 'GitHub', href: '#' },
@@ -213,12 +286,12 @@ export const contact = {
 // The actual displayable email address / LinkedIn handle, used by the
 // Hero contact row. Distinct from contact.links (generic "Email"/"LinkedIn"
 // labels used for the footer icons) and footer.name (the "made by" credit).
-export const socials = {
+export const socials: Socials = {
   email: { label: 'dangmkhoa2522@gmail.com', href: 'mailto:dangmkhoa2522@gmail.com' },
   linkedin: { label: 'linkedin.com/in/kyledang2522', href: 'https://www.linkedin.com/in/kyledang2522/' },
 };
 
-export const footer = {
+export const footer: FooterData = {
   name: 'Kyle Dang',
   year: '2026',
 };
