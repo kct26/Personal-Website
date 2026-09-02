@@ -146,8 +146,6 @@
   position: relative;
 }
 
-/* the sage-green rounded shape peeking out from behind the device —
-   purely decorative, sits at a lower z-index than the frame on top of it */
 .photoShape {
   position: absolute;
   top: 44px;
@@ -158,12 +156,8 @@
   border-radius: 28px;
   z-index: 0;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-
 }
 
-/* iPad-style bezel — dark uniform border around the photo like a
-   tablet's frame, rounded corners. No text overlay (removed on
-   purpose, stays that way — just the device look, just the photo). */
 .photoFrame {
   position: relative;
   z-index: 1;
@@ -173,8 +167,6 @@
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
 }
 
-/* front-camera dot — the small detail that actually reads as "tablet"
-   rather than just a dark rectangle with rounded corners */
 .photoFrame::before {
   content: '';
   position: absolute;
@@ -197,6 +189,43 @@
   background: var(--surface);
 }
 
+/* ==== background photo + glass panel (new) ==== */
+
+.heroOuter {
+  position: relative;
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--ink);
+  z-index: 0;
+}
+
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  background: var(--hero-scrim);
+  z-index: 0;
+}
+
+.profileGlass {
+  --text: #FFFFFF;
+  --text-dim: rgba(255, 255, 255, 0.82);
+  --text-faint: rgba(255, 255, 255, 0.62);
+  --line: rgba(255, 255, 255, 0.22);
+
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 40px 44px;
+}
+
 @media (max-width: 860px) {
   .hero {
     grid-template-columns: 1fr;
@@ -209,4 +238,5 @@
 
 @media (max-width: 480px) {
   .name { font-size: 2.1rem; }
+  .profileGlass { padding: 28px 24px; }
 }

@@ -15,7 +15,7 @@ const CONTACT_ICONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
 
 export default function Contact() {
   return (
-    <section id="contact" className="section">
+    <section id="contact" className="sectionTint">
       <div className="wrap">
         <SectionHeader title="Contact" />
         <div className={styles.layout}>

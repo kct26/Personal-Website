@@ -116,11 +116,7 @@
 .period {
   font-size: 13px;
   font-weight: 500;
-  color: var(--text);
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 5px 14px;
+  color: var(--text-dim);
   white-space: nowrap;
 }
 

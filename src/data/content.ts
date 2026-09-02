@@ -296,6 +296,7 @@ export const socials: Socials = {
 // Photo banners shown in the middle of each section — see
 // public/images/README.txt for where to add the actual files.
 export const sectionImages = {
+  hero: '/images/hero-bg.jpg',  
   skills: '/images/skills.jpg',
   contact: '/images/contact.jpg',
 };

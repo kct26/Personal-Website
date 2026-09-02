@@ -1,7 +1,10 @@
 :root {
   /* true white surface, matching the reference exactly */
-  --bg: #FFFFFF;
-  --surface: #F7F6F3;
+  --bg: #F8F4EA;
+  --surface: #F1ECDF;
+  --tint-bg: #E3E7DC;   /* was #F1F3EA — closer to the sage-gray in the reference */
+  --tint-shape: var(--decorative-green);
+
   --line: #E6E4DD;
   --line-soft: #F0EFEA;
   --text: #14130F;
@@ -58,6 +61,11 @@
   --font-display: var(--font-crimson), serif;
   --font-body: var(--font-dm-sans), sans-serif;
   --font-mono: var(--font-plex-mono), monospace;
+
+  --hero-scrim: linear-gradient(180deg, rgba(20,19,15,0.45) 0%, rgba(20,19,15,0.78) 100%);
+  --glass-bg: rgba(255, 255, 255, 0.10);
+  --glass-border: rgba(255, 255, 255, 0.18);
+
 }
 
 [data-theme='dark'] {
@@ -87,13 +95,17 @@
   --glow: #FFFFFF;
   --glow-signal: #B5B5B5;
   --nav-bg: transparent;
+  
+  --hero-scrim: linear-gradient(180deg, rgba(12,11,8,0.55) 0%, rgba(12,11,8,0.85) 100%);
+
+  --tint-bg: #1B1F17;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
   scroll-behavior: smooth;
-  font-size: 17.5px;
+  font-size: 18px;
   background: var(--bg);
 }
 
@@ -178,10 +190,49 @@ section {
 
 /* shared section shell — every <section> gets this unless overridden */
 .section {
-  padding: 72px 0;
+  padding: 84px 0;
   border-top: 1px solid var(--line);
 }
 
+.sectionTint {
+  position: relative;
+  background: var(--tint-bg);
+  overflow: hidden;
+  border-top: none;
+  padding: 100px 0;
+}
+
 @media (max-width: 480px) {
-  .section { padding: 52px 0; }
+  .section { padding: 56px 0; }
+  .sectionTint { padding: 68px 0; }
+}
+
+.sectionTint::before {
+  content: '';
+  position: absolute;
+  top: -70px; right: -90px;
+  width: 260px; height: 260px;
+  background: var(--tint-shape);
+  border-radius: 56px;
+  transform: rotate(18deg);
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sectionTint::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: -70px;
+  width: 200px; height: 200px;
+  background: var(--tint-shape);
+  border-radius: 48px;
+  transform: rotate(-12deg);
+  opacity: 0.22;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .sectionTint::before, .sectionTint::after { display: none; }
 }
