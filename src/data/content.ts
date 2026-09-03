@@ -29,6 +29,9 @@ export interface Hero {
   availability: string;
   quickLinks: QuickLink[];
   primaryCta: { label: string; href: string };
+  // Hardware-engineering focus areas shown in the hero's "Reaches for"
+  // strip — deliberately separate from the Languages skill list.
+  focusAreas: string[];
 }
 
 export interface SkillGroup {
@@ -123,6 +126,18 @@ export const hero: Hero = {
     { label: 'GitHub', href: '#', icon: 'link' },
   ],
   primaryCta: { label: 'View projects', href: '#projects' },
+  focusAreas: [
+    'FPGA Design',
+    'Design Verification',
+    'Digital Logic Design',
+    'Embedded Systems',
+    'Silicon & Chip Design',
+    'Firmware Development',
+    'Network Engineering',
+    'Systems Engineering',
+    'Test Engineering',
+    'Hardware Validation',
+  ],
 };
 
 export const skills: SkillGroup[] = [

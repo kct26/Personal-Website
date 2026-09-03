@@ -1,6 +1,6 @@
 :root {
   /* true white surface, matching the reference exactly */
-  --bg: #F8F4EA;
+  --bg: #FFFFFF;
   --surface: #F1ECDF;
   --tint-bg: #E3E7DC;   /* was #F1F3EA — closer to the sage-gray in the reference */
   --tint-shape: var(--decorative-green);

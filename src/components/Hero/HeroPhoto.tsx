@@ -13,7 +13,10 @@ export default function HeroPhoto() {
           around its edges — purely visual, no content */}
       <div className={styles.photoShape} aria-hidden="true" />
 
-      <div className={styles.photoFrame}>
+      {/* data-nav-dark: the only dark surface left in the hero now that
+          the full-bleed background photo is gone — this is what flips
+          the nav to light-on-dark text while it scrolls over the frame */}
+      <div className={styles.photoFrame} data-nav-dark>
         {!failed && (
           // eslint-disable-next-line @next/next/no-img-element -- plain
           // <img> on purpose: the photo may not exist yet, and next/image
