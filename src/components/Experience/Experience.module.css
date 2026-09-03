@@ -62,6 +62,7 @@
 .org {
   display: flex;
   align-items: center;
+  font-family: var(--font-display);
   font-size: 15px;
   color: var(--text-dim);
 }

@@ -13,7 +13,7 @@ export default function Experience() {
             <div key={item.title} className={styles.item}>
               <div className={styles.meta}>
                 <h3>{item.title}</h3>
-                <span className={`${styles.period} mono`}>{item.period}</span>
+                <span className={styles.period}>{item.period}</span>
               </div>
 
               {/* org and location share one row instead of org sitting
@@ -25,11 +25,11 @@ export default function Experience() {
                     // may not exist yet; next/image would error on a missing file
                     <img src={item.logo} alt={item.org} className={styles.badge} />
                   ) : (
-                    <span className={`${styles.badgeText} mono`}>{item.orgBadge}</span>
+                    <span className={styles.badgeText}>{item.orgBadge}</span>
                   )}
                   {item.org}
                 </div>
-                <span className={`${styles.location} mono`}>
+                <span className={styles.location}>
                   <PinIcon />
                   {item.location}
                 </span>

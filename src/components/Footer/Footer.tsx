@@ -4,7 +4,7 @@ import styles from './Footer.module.css';
 export default function Footer() {
   return (
     <div className="wrap">
-      <footer className={`${styles.footer} mono`}>
+      <footer className={styles.footer}>
         <span className={styles.left}>
           <span>© {footer.year}</span>
           <span className={styles.divider}>|</span>

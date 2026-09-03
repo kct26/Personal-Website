@@ -18,7 +18,7 @@ export default function Education() {
                     // may not exist yet; next/image would error on a missing file
                     <img src={entry.logo} alt={entry.school} className={styles.badge} />
                   ) : (
-                    <span className={`${styles.badgeText} mono`}>{entry.badge}</span>
+                    <span className={styles.badgeText}>{entry.badge}</span>
                   )}
                   {entry.school}
                 </h3>
@@ -32,8 +32,8 @@ export default function Education() {
                 )}
               </div>
               <div className={styles.metaRight}>
-                <span className={`${styles.period} mono`}>{entry.period}</span>
-                <span className={`${styles.location} mono`}>
+                <span className={styles.period}>{entry.period}</span>
+                <span className={styles.location}>
                   <PinIcon />
                   {entry.location}
                 </span>

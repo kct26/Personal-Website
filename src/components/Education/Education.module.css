@@ -70,7 +70,7 @@
   flex-shrink: 0;
 }
 
-.degree { color: var(--text-dim); font-weight: 400; font-size: 15px; margin-bottom: 10px; }
+.degree { font-family: var(--font-display); color: var(--text-dim); font-weight: 400; font-size: 15px; margin-bottom: 10px; }
 
 .bulletList {
   list-style: none;

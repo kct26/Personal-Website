@@ -13,7 +13,7 @@ export default function Skills() {
               <h3>{group.category}</h3>
               <div className={styles.chipRow}>
                 {group.items.map((item) => (
-                  <span key={item} className={`${styles.chip} mono`}>{item}</span>
+                  <span key={item} className={styles.chip}>{item}</span>
                 ))}
               </div>
             </div>

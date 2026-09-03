@@ -23,7 +23,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       <div className={styles.body}>
         <div className={styles.top}>
           <h3>{project.title}</h3>
-          <span className={`${styles.tag} mono`}>{project.tag}</span>
+          <span className={styles.tag}>{project.tag}</span>
         </div>
         <p>{project.description}</p>
         <ul className={styles.highlights}>
