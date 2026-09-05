@@ -1,5 +1,5 @@
 import { contact, sectionImages } from '@/data/content';
-import { MailIcon, GitHubIcon, LinkedInIcon, FacebookIcon, InstagramIcon } from '../shared/icons';
+import { MailIcon, GitHubIcon, LinkedInIcon } from '../shared/icons';
 import SectionHeader from '../shared/SectionHeader';
 import SideImage from '../shared/SideImage';
 import styles from './Contact.module.css';
@@ -9,8 +9,6 @@ const CONTACT_ICONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
   Email: MailIcon,
   GitHub: GitHubIcon,
   LinkedIn: LinkedInIcon,
-  Facebook: FacebookIcon,
-  Instagram: InstagramIcon,
 };
 
 export default function Contact() {

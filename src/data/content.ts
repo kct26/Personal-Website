@@ -29,8 +29,10 @@ export interface Hero {
   availability: string;
   quickLinks: QuickLink[];
   primaryCta: { label: string; href: string };
-  // Hardware-engineering focus areas shown in the hero's "Reaches for"
-  // strip — deliberately separate from the Languages skill list.
+  // Concrete tools shown in the hero's "Reaches for" strip — kept as
+  // specific, already-claimed items (see `skills` below) rather than
+  // job-title buzzwords, so the claim is checkable against the rest
+  // of the site instead of reading like a keyword list.
   focusAreas: string[];
 }
 
@@ -48,6 +50,11 @@ export interface ProjectLink {
 
 export interface Project {
   cover: ProjectCoverType;
+  // Real screenshot/GIF demonstrating the project in action — shown
+  // instead of the decorative `cover` illustration once the file exists
+  // at this path (see public/images/projects/README.txt). Falls back
+  // to the `cover` illustration if the file is missing.
+  image?: string;
   title: string;
   tag: string;
   description: string;
@@ -117,7 +124,7 @@ export const hero: Hero = {
   wave: '👋',
   role: 'Electrical & Computer Engineering Student',
   bio: [
-    'I build firmware, systems, and software, and I test everything on real hardware. I follow and build across FPGA and hardware engineering, silicon and chip design, embedded systems, and firmware.',
+    'I design and build hardware end to end — a 4-bit CPU in Verilog on FPGA, STM32 firmware for battery management, and PID control loops in C++. I test everything on the bench before I trust it in code.',
   ],
   location: 'Philadelphia, PA',
   availability: 'Open to relocate / co-op / internship',
@@ -126,18 +133,7 @@ export const hero: Hero = {
     { label: 'GitHub', href: '#', icon: 'link' },
   ],
   primaryCta: { label: 'View projects', href: '#projects' },
-  focusAreas: [
-    'FPGA Design',
-    'Design Verification',
-    'Digital Logic Design',
-    'Embedded Systems',
-    'Silicon & Chip Design',
-    'Firmware Development',
-    'Network Engineering',
-    'Systems Engineering',
-    'Test Engineering',
-    'Hardware Validation',
-  ],
+  focusAreas: ['Verilog', 'FPGA', 'STM32', 'KiCad', 'Oscilloscope / DMM', 'I2C / SPI / UART'],
 };
 
 export const skills: SkillGroup[] = [
@@ -162,6 +158,7 @@ export const skills: SkillGroup[] = [
 export const projects: Project[] = [
   {
     cover: 'code',
+    image: '/images/projects/battery-management.png',
     title: 'Battery Management Firmware',
     tag: 'firmware',
     description: 'Custom C firmware for an STM32-based battery management system.',
@@ -177,6 +174,7 @@ export const projects: Project[] = [
   },
   {
     cover: 'circuit',
+    image: '/images/projects/fpga-cpu.png',
     title: '4-bit CPU on FPGA',
     tag: 'hardware',
     description: 'A minimal 4-bit CPU designed in Verilog, synthesized to an FPGA dev board.',
@@ -192,6 +190,7 @@ export const projects: Project[] = [
   },
   {
     cover: 'chart',
+    image: '/images/projects/air-quality-monitor.png',
     title: 'IoT Air Quality Monitor',
     tag: 'full-stack',
     description: 'ESP32 sensor node streaming live readings to a React dashboard.',
@@ -207,6 +206,7 @@ export const projects: Project[] = [
   },
   {
     cover: 'path',
+    image: '/images/projects/line-following-robot.png',
     title: 'Line-Following Robot',
     tag: 'robotics',
     description: 'PID-controlled line follower built from scratch for competition speed runs.',
@@ -292,8 +292,6 @@ export const contact: Contact = {
     { label: 'Email', href: 'mailto:dangmkhoa2522@gmail.com' },
     { label: 'GitHub', href: '#' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kyledang2522/' },
-    { label: 'Facebook', href: '#' },
-    { label: 'Instagram', href: '#' },
   ],
 };
 

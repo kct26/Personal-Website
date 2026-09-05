@@ -3,7 +3,6 @@
   --bg: #FFFFFF;
   --surface: #F1ECDF;
   --tint-bg: #E3E7DC;   /* was #F1F3EA — closer to the sage-gray in the reference */
-  --tint-shape: var(--decorative-green);
 
   --line: #E6E4DD;
   --line-soft: #F0EFEA;
@@ -206,32 +205,3 @@ section {
   .sectionTint { padding: 68px 0; }
 }
 
-.sectionTint::before {
-  content: '';
-  position: absolute;
-  top: -70px; right: -90px;
-  width: 260px; height: 260px;
-  background: var(--tint-shape);
-  border-radius: 56px;
-  transform: rotate(18deg);
-  opacity: 0.4;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.sectionTint::after {
-  content: '';
-  position: absolute;
-  bottom: -100px; left: -70px;
-  width: 200px; height: 200px;
-  background: var(--tint-shape);
-  border-radius: 48px;
-  transform: rotate(-12deg);
-  opacity: 0.22;
-  z-index: 0;
-  pointer-events: none;
-}
-
-@media (max-width: 640px) {
-  .sectionTint::before, .sectionTint::after { display: none; }
-}
