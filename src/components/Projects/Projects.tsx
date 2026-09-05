@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react';
 import { projects } from '@/data/content';
 import SectionHeader from '../shared/SectionHeader';
 import { ArrowIcon } from '../shared/icons';
@@ -10,8 +7,7 @@ import styles from './Projects.module.css';
 const PREVIEW_COUNT = 2;
 
 export default function Projects() {
-  const [expanded, setExpanded] = useState(false);
-  const visible = expanded ? projects : projects.slice(0, PREVIEW_COUNT);
+  const visible = projects.slice(0, PREVIEW_COUNT);
   const hasMore = projects.length > PREVIEW_COUNT;
 
   return (
@@ -21,14 +17,10 @@ export default function Projects() {
           title="Projects"
           action={
             hasMore && (
-              <button
-                type="button"
-                className={styles.viewMore}
-                onClick={() => setExpanded((v) => !v)}
-              >
-                {expanded ? 'view less' : 'view more'}
-                <ArrowIcon className={expanded ? styles.arrowUp : ''} />
-              </button>
+              <a href="/projects" className={styles.viewMore}>
+                view more
+                <ArrowIcon />
+              </a>
             )
           }
         />

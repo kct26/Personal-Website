@@ -144,11 +144,11 @@
 .viewMore:hover { color: var(--text); }
 
 .viewMore svg {
-  transition: transform 0.2s ease;
+  transition: transform 0.15s ease;
 }
 
-.viewMore .arrowUp {
-  transform: rotate(-90deg);
+.viewMore:hover svg {
+  transform: translateX(2px);
 }
 
 @media (max-width: 720px) {

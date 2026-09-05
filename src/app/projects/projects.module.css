@@ -1,0 +1,13 @@
+.back {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-dim);
+  margin-bottom: 24px;
+  transition: color 0.15s ease;
+}
+
+.back:hover {
+  color: var(--text);
+}
