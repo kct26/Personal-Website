@@ -38,12 +38,32 @@
     display: 'swap',
   });
 
+  const SITE_URL = 'https://kyle-thoughts.vercel.app';
+  const SITE_TITLE = 'Kyle Dang — Computer Engineering Student';
+  const SITE_DESCRIPTION =
+    'Portfolio of Kyle Dang, a Computer Engineering student — embedded systems, firmware, and software.';
+
   export const metadata: Metadata = {
+    metadataBase: new URL(SITE_URL),
     title: 'Kyle Thoughts',
-    description:
-      'Portfolio of Kyle Dang, a Computer Engineering student — embedded systems, firmware, and software.',
+    description: SITE_DESCRIPTION,
     icons: {
       icon: '/favicon.svg',
+    },
+    // Controls how the site looks when linked in Slack/LinkedIn/iMessage/etc.
+    openGraph: {
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      url: SITE_URL,
+      siteName: 'Kyle Thoughts',
+      images: ['/profile.jpg'],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      images: ['/profile.jpg'],
     },
   };
 

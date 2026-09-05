@@ -15,9 +15,12 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--ink-line);
   display: inline-block;
 }
+
+.dots span:nth-child(1) { background: #FF5F57; }
+.dots span:nth-child(2) { background: #FEBC2E; }
+.dots span:nth-child(3) { background: #28C840; }
 
 .codeLine {
   display: flex;
@@ -32,8 +35,8 @@
   text-align: right;
 }
 
-.code { color: var(--ink-text-dim); }
+.code { color: #D4D4D4; }
 
-.tok-kw { color: var(--glow); }
-.tok-fn { color: var(--glow-signal); }
-.tok-num { color: var(--glow); }
+.tok-kw { color: #C586C0; }
+.tok-fn { color: #DCDCAA; }
+.tok-num { color: #B5CEA8; }
