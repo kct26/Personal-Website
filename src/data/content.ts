@@ -115,7 +115,7 @@ export const hero: Hero = {
   avatarInitials: 'KD',
   name: 'Kyle Dang',
   wave: '👋',
-  role: 'Computer Engineering Student',
+  role: 'Electrical & Computer Engineering Student',
   bio: [
     'I build firmware, systems, and software, and I test everything on real hardware. I follow and build across FPGA and hardware engineering, silicon and chip design, embedded systems, and firmware.',
   ],
@@ -268,12 +268,9 @@ export const education: EducationEntry[] = [
     location: 'Philadelphia, PA',
     period: 'August 2026 — May 2030 (expected)',
     bullets: [
-      'Digital Logic Design',
-      'Computer Architecture',
-      'Embedded Systems',
-      'Signals & Systems',
-      'Data Structures',
-      'Operating Systems',
+      '...',
+      '...',
+      '...',
     ],
   },
   {
