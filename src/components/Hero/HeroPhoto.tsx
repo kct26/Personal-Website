@@ -19,24 +19,20 @@ export default function HeroPhoto() {
     }
   }, []);
 
+  if (failed) return null;
+
   return (
-    <div className={styles.photoWrap}>
-      {/* data-nav-dark: the only dark surface in the hero — flips the
-          nav to light-on-dark text while it scrolls over the frame */}
-      <div className={styles.photoFrame} data-nav-dark>
-        {!failed && (
-          // eslint-disable-next-line @next/next/no-img-element -- plain
-          // <img> on purpose: the photo may not exist yet, and next/image
-          // would error at build time on a missing/arbitrary user file
-          <img
-            ref={imgRef}
-            src="/profile.jpg"
-            alt={hero.name}
-            className={styles.photo}
-            onError={() => setFailed(true)}
-          />
-        )}
-      </div>
+    <div className={styles.photoFrame}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- plain
+          <img> on purpose: the photo may not exist yet, and next/image
+          would error at build time on a missing/arbitrary user file */}
+      <img
+        ref={imgRef}
+        src="/profile.jpg"
+        alt={hero.name}
+        className={styles.photo}
+        onError={() => setFailed(true)}
+      />
     </div>
   );
 }

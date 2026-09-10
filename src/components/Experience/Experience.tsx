@@ -1,46 +1,41 @@
 import { experience } from '@/data/content';
 import SectionHeader from '../shared/SectionHeader';
-import { PinIcon } from '../shared/icons';
 import styles from './Experience.module.css';
 
+const PREVIEW_COUNT = 2;
+
 export default function Experience() {
+  const visible = experience.slice(0, PREVIEW_COUNT);
+  const hasMore = experience.length > PREVIEW_COUNT;
+
   return (
-    <section id="experience" className="sectionTint">
+    <section id="experience" className="section">
       <div className="wrap">
-        <SectionHeader title="Experience" />
-        <div className={styles.timeline}>
-          {experience.map((item) => (
-            <div key={item.title} className={styles.item}>
-              <div className={styles.meta}>
-                <h3>{item.title}</h3>
-                <span className={styles.period}>{item.period}</span>
-              </div>
-
-              {/* org and location share one row instead of org sitting
-                  on its own line below the title */}
-              <div className={styles.subRow}>
-                <div className={styles.org}>
-                  {item.logo ? ( 
-                    // eslint-disable-next-line @next/next/no-img-element -- logo
-                    // may not exist yet; next/image would error on a missing file
-                    <img src={item.logo} alt={item.org} className={styles.badge} />
-                  ) : (
-                    <span className={styles.badgeText}>{item.orgBadge}</span>
-                  )}
-                  {item.org}
+        <SectionHeader
+          title="Experience"
+          action={
+            hasMore && (
+              <a href="/experience" className={styles.viewMore}>
+                View more →
+              </a>
+            )
+          }
+        >
+          <div className={styles.list}>
+            {visible.map((item) => (
+              <div key={item.title} className={styles.item}>
+                <div className={styles.meta}>
+                  <h3>{item.title}, {item.org}</h3>
+                  <span className={styles.period}>{item.period}</span>
                 </div>
-                <span className={styles.location}>
-                  <PinIcon />
-                  {item.location}
-                </span>
+                <div className={styles.location}>{item.location}</div>
+                <ul className={styles.bulletList}>
+                  {item.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                </ul>
               </div>
-
-              <ul className={styles.bulletList}>
-                {item.bullets.map((b, i) => <li key={i}>{b}</li>)}
-              </ul>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </SectionHeader>
       </div>
     </section>
   );

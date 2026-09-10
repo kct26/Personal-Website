@@ -4,21 +4,17 @@ import styles from './Skills.module.css';
 
 export default function Skills() {
   return (
-    <section id="skills" className="sectionTint">
+    <section id="skills" className="section">
       <div className="wrap">
-        <SectionHeader title="Skills" />
-        <div className={styles.board}>
-          {skills.map((group) => (
-            <div key={group.category} className={styles.cell}>
-              <h3>{group.category}</h3>
-              <div className={styles.chipRow}>
-                {group.items.map((item) => (
-                  <span key={item} className={styles.chip}>{item}</span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <SectionHeader title="Skills">
+          <ul className={styles.list}>
+            {skills.map((group) => (
+              <li key={group.category} className={styles.row}>
+                <strong>{group.category}:</strong> {group.items.join(', ')}
+              </li>
+            ))}
+          </ul>
+        </SectionHeader>
       </div>
     </section>
   );

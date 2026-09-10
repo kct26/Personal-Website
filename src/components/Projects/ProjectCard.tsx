@@ -2,23 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Project } from '@/data/content';
-import CodeCover from './covers/CodeCover';
-import CircuitCover from './covers/CircuitCover';
-import ChartCover from './covers/ChartCover';
-import PathCover from './covers/PathCover';
 import styles from './Projects.module.css';
-
-const COVERS = {
-  code: CodeCover,
-  circuit: CircuitCover,
-  chart: ChartCover,
-  path: PathCover,
-} as const;
 
 export default function ProjectCard({ project }: { project: Project }) {
   const [imageFailed, setImageFailed] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
-  const Cover = COVERS[project.cover] ?? CircuitCover;
   const showImage = project.image && !imageFailed;
 
   useEffect(() => {
@@ -33,41 +21,40 @@ export default function ProjectCard({ project }: { project: Project }) {
   }, []);
 
   return (
-    <div className={styles.card}>
-      <div className={styles.cover} data-nav-dark>
-        {showImage ? (
-          // eslint-disable-next-line @next/next/no-img-element -- plain
-          // <img> on purpose: the screenshot may not exist yet, and
-          // next/image would error at build time on a missing file
-          <img
-            ref={imgRef}
-            src={project.image}
-            alt={`${project.title} screenshot`}
-            className={styles.coverImage}
-            onError={() => setImageFailed(true)}
-          />
-        ) : (
-          <Cover />
-        )}
+    <article className={styles.item}>
+      <div className={styles.top}>
+        <h3>{project.title}</h3>
+        <span className={styles.tag}>{project.tag}</span>
       </div>
-      <div className={styles.body}>
-        <div className={styles.top}>
-          <h3>{project.title}</h3>
-          <span className={styles.tag}>{project.tag}</span>
-        </div>
-        <p>{project.description}</p>
-        <ul className={styles.highlights}>
-          {project.highlights.map((h, i) => <li key={i}>{h}</li>)}
-        </ul>
-        <div className={styles.stackRow}>
-          {project.stack.map((s) => <span key={s}>{s}</span>)}
-        </div>
-        <div className={styles.links}>
-          {project.links.map((link) => (
-            <a key={link.label} href={link.href}>{link.label}</a>
-          ))}
-        </div>
+      <p>{project.description}</p>
+
+      {showImage && (
+        // eslint-disable-next-line @next/next/no-img-element -- plain
+        // <img> on purpose: the screenshot may not exist yet, and
+        // next/image would error at build time on a missing file
+        <img
+          ref={imgRef}
+          src={project.image}
+          alt={`${project.title} screenshot`}
+          className={styles.image}
+          onError={() => setImageFailed(true)}
+        />
+      )}
+
+      <ul className={styles.highlights}>
+        {project.highlights.map((h, i) => <li key={i}>{h}</li>)}
+      </ul>
+      <div className={styles.stackLine}>
+        <strong>Stack:</strong> {project.stack.join(', ')}
       </div>
-    </div>
+      <div className={styles.links}>
+        {project.links.map((link, i) => (
+          <span key={link.label}>
+            {i > 0 && <span className={styles.sep}>·</span>}
+            <a href={link.href}>{link.label}</a>
+          </span>
+        ))}
+      </div>
+    </article>
   );
 }

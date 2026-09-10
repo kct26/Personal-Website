@@ -8,7 +8,7 @@ import styles from './projects.module.css';
 import { projects } from '@/data/content';
 
 export const metadata: Metadata = {
-  title: 'Projects — Kyle Dang',
+  title: 'Projects - Kyle Dang',
   description: 'All projects by Kyle Dang.',
 };
 
@@ -16,16 +16,17 @@ export default function ProjectsPage() {
   return (
     <>
       <Nav />
-      <main className="mainOffset">
+      <main>
         <section className="section">
           <div className="wrap">
             <a href="/#projects" className={styles.back}>← Back to home</a>
-            <SectionHeader title="All Projects" />
-            <div className={projectStyles.grid}>
-              {projects.map((project) => (
-                <ProjectCard key={project.title} project={project} />
-              ))}
-            </div>
+            <SectionHeader title="All Projects">
+              <div className={projectStyles.list}>
+                {projects.map((project) => (
+                  <ProjectCard key={project.title} project={project} />
+                ))}
+              </div>
+            </SectionHeader>
           </div>
         </section>
       </main>

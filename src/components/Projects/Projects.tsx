@@ -1,6 +1,5 @@
 import { projects } from '@/data/content';
 import SectionHeader from '../shared/SectionHeader';
-import { ArrowIcon } from '../shared/icons';
 import ProjectCard from './ProjectCard';
 import styles from './Projects.module.css';
 
@@ -18,17 +17,17 @@ export default function Projects() {
           action={
             hasMore && (
               <a href="/projects" className={styles.viewMore}>
-                view more
-                <ArrowIcon />
+                View more →
               </a>
             )
           }
-        />
-        <div className={styles.grid}>
-          {visible.map((project) => (
-            <ProjectCard key={project.title} project={project} />
-          ))}
-        </div>
+        >
+          <div className={styles.list}>
+            {visible.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </div>
+        </SectionHeader>
       </div>
     </section>
   );

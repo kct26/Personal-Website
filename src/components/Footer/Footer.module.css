@@ -1,36 +1,31 @@
 .footer {
-  padding: 20px 0;
+  padding: 18px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 13px;
   color: var(--text-faint);
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 12px;
+  border-top: 1px solid var(--line);
 }
 
 .left {
   display: flex;
   align-items: center;
-  gap: 10px;
-  letter-spacing: 0.02em;
+  gap: 8px;
 }
 
 .divider {
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 .thoughtsLink {
-  color: var(--text-faint);
-  transition: color 0.15s ease;
+  color: var(--link);
 }
 
-.thoughtsLink:hover {
-  color: var(--text);
-}
+.right strong { color: var(--text-dim); font-weight: 500; }
 
-.right strong { color: var(--text); font-weight: 600; }
-
-@media (max-width: 860px) {
-  .footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+@media (max-width: 640px) {
+  .footer { flex-direction: column; align-items: flex-start; gap: 8px; }
 }

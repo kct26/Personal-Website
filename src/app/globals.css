@@ -1,207 +1,96 @@
 :root {
-  /* true white surface, matching the reference exactly */
+  /* Plain white/black document theme - no dark mode, no color accents.
+     Modeled on a Google Sites-style academic page: white page, near-black
+     text, a single blue for links, thin gray hairlines. */
   --bg: #FFFFFF;
-  --surface: #F1ECDF;
-  --tint-bg: #E3E7DC;   /* was #F1F3EA — closer to the sage-gray in the reference */
+  --surface: #F2F2F2;
+  --line: #DADCE0;
 
-  --line: #E6E4DD;
-  --line-soft: #F0EFEA;
-  --text: #14130F;
-  --text-dim: #47443B;
-  --text-faint: #7A7566;
+  --text: #202124;
+  --text-dim: #3C4043;
+  --text-faint: #5F6368;
 
-  /* emphasis tokens — dark neutral in light mode, flip to off-white in
-     dark mode below. Used for text/borders, NOT for primary CTA
-     buttons — those use --cta (green) instead. */
-  --accent: #14130F;
-  --accent-tint: rgba(20, 19, 15, 0.06);
-  --accent-soft: #C7BFA9;
-  --signal: #7A7566;
-  --on-accent: #FFFFFF; /* text/icon color drawn on top of an accent-filled surface */
+  --link: #1155CC;
+  --link-hover: #0B3D91;
 
-  /* primary CTA green — the one deliberate color accent, used only for
-     the main call-to-action buttons (Hero's "View projects", project
-     source/demo links), so it stays meaningful instead of overused */
-  --cta: #2F6D4F;
-  --cta-hover: #275C43;
-  --on-cta: #FFFFFF;
+  --radius-sm: 4px;
+  --maxw: 1160px;
+  --nav-height: 52px;
 
-  /* muted sage green for the decorative shape behind the hero photo —
-     deliberately softer/lighter than --cta so the two greens read as
-     related but distinct (one is a button, one is a background shape) */
-  --decorative-green: #8C9573;
+  /* single source of truth for how wide a bullet list (Experience,
+     Education, Projects) can grow before wrapping */
+  --bullets-max-width: 700px;
 
-  /* semantic "available" indicator — separate token so it can differ
-     from --cta even though both are green right now */
-  --status-green: #22C55E;
-
-  /* instrument-screen tokens — the dark panels (project covers, closing
-     CTA band) stay a fixed dark "screen" in light mode, and become a
-     slightly-raised panel in dark mode. See [data-theme="dark"] below. */
-  --ink: #14130F;
-  --ink-2: #0C0B08;
-  --ink-line: #2C2A22;
-  --ink-text: #FFFFFF;
-  --ink-text-dim: #B8B2A0;
-  --glow: #FFFFFF;
-  --glow-signal: #9A9A9A;
-
-  --radius-sm: 8px;
-  --radius: 16px;
-  --maxw: 1080px;
-  --nav-height: 92px;
-  --nav-bg: transparent;
-
-  /* single source of truth for how wide a bullet list (Experience or
-     Education) can grow before wrapping — change this one value to
-     resize both sections' lists together */
-  --bullets-max-width: 900px;
-
-  --font-display: var(--font-crimson), serif;
-  --font-body: var(--font-dm-sans), sans-serif;
-  --font-mono: var(--font-plex-mono), monospace;
-
-  --hero-scrim: linear-gradient(180deg, rgba(20,19,15,0.45) 0%, rgba(20,19,15,0.78) 100%);
-  --glass-bg: rgba(255, 255, 255, 0.10);
-  --glass-border: rgba(255, 255, 255, 0.18);
-
-}
-
-[data-theme='dark'] {
-  --bg: #161410;
-  --surface: #1F1C16;
-  --line: #332F26;
-  --line-soft: #26221B;
-  --text: #F5F1E6;
-  --text-dim: #C2BBA8;
-  --text-faint: #857F6C;
-
-  --accent: #F5F1E6;
-  --accent-tint: rgba(245, 241, 230, 0.08);
-  --accent-soft: #514C3D;
-  --signal: #9A937D;
-  --on-accent: #161410;
-
-  --cta: #4C9273;
-  --cta-hover: #5CA684;
-  --on-cta: #10150F;
-
-  --ink: #26221B;
-  --ink-2: #17140F;
-  --ink-line: #3D3829;
-  --ink-text: #F5F1E6;
-  --ink-text-dim: #9A937D;
-  --glow: #FFFFFF;
-  --glow-signal: #B5B5B5;
-  --nav-bg: transparent;
-  --hero-scrim: linear-gradient(180deg, rgba(12,11,8,0.55) 0%, rgba(12,11,8,0.85) 100%);
-
-  --tint-bg: #1B1F17;
+  --font-sans: var(--font-lato), Arial, Helvetica, sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
   scroll-behavior: smooth;
-  font-size: 17.5px;
+  font-size: 16px;
   background: var(--bg);
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }
 
-html, body {
-  overflow-x: hidden;
+body {
   max-width: 100%;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-a { color: inherit; text-decoration: none; }
-::selection { background: var(--accent-soft); color: var(--text); }
+a { color: var(--link); text-decoration: underline; }
+a:hover { color: var(--link-hover); }
+::selection { background: #D2E3FC; color: var(--text); }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
 }
 
 h1, h2, h3 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
-  text-wrap: balance;
+  line-height: 1.3;
+  color: var(--text);
 }
-
-p {
-  text-wrap: pretty;
-}
-
-.mono { font-family: var(--font-mono); }
 
 .wrap {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding-left: 32px;
-  padding-right: 32px;
-  position: relative;
-  z-index: 1;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
-@media (max-width: 860px) {
-  .wrap { padding-left: 22px; padding-right: 22px; }
+@media (max-width: 640px) {
+  .wrap { padding-left: 18px; padding-right: 18px; }
 }
 
-/* pushes page content below the fixed nav, now that there's no marquee
-   strip in the flow to provide that offset */
-.mainOffset {
-  padding-top: var(--nav-height);
-}
-
-/* When a nav link scrolls the page to a section's #id, the browser aligns
-   that element's top edge with the viewport's top edge — which puts it
-   right under the fixed nav with no breathing room. scroll-margin-top
-   tells the browser to stop short of that by this much instead. Applied
-   as a plain element selector so every <section> gets it automatically,
-   regardless of which component it belongs to. */
 section {
-  scroll-margin-top: calc(var(--nav-height) + 16px);
+  scroll-margin-top: calc(var(--nav-height) + 12px);
 }
 
 #top {
   scroll-margin-top: var(--nav-height);
 }
 
-/* shared section shell — every <section> gets this unless overridden */
+/* shared section shell - plain hairline divider, no tinted backgrounds */
 .section {
-  padding: 84px 0;
+  padding: 48px 0;
   border-top: 1px solid var(--line);
 }
 
-.sectionTint {
-  position: relative;
-  background: var(--tint-bg);
-  overflow: hidden;
-  border-top: none;
-  padding: 100px 0;
-}
-
 @media (max-width: 480px) {
-  .section { padding: 56px 0; }
-  .sectionTint { padding: 68px 0; }
+  .section { padding: 36px 0; }
 }
-

@@ -7,5 +7,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: SITE_URL, lastModified },
     { url: `${SITE_URL}/projects`, lastModified },
+    { url: `${SITE_URL}/experience`, lastModified },
   ];
 }
